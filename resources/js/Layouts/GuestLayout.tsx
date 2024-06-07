@@ -8,7 +8,7 @@ import { PackageIcon } from "lucide-react";
 
 const navigation = [
     { name: "Home", href: "/" },
-    { name: "Products", href: "#" },
+    { name: "Products", href: "/products" },
     { name: "About", href: "#" },
 ];
 
@@ -49,7 +49,7 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                     >
                         <div className="flex lg:flex-1">
                             <Link
-                                href="#"
+                                href="/"
                                 className="flex -m-1.5 p-1.5 items-center gap-2"
                             >
                                 <PackageIcon className="h-8 w-auto" />
@@ -82,12 +82,18 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                                 </Link>
                             ))}
                         </div>
-                        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
                             <a
                                 href="/admin/login"
                                 className="text-sm font-semibold leading-6 text-gray-900"
                             >
-                                Log in <span aria-hidden="true">&rarr;</span>
+                                Log in
+                            </a>
+                            <a
+                                href="/register"
+                                className="text-sm font-semibold leading-6 text-gray-900"
+                            >
+                                Register
                             </a>
                         </div>
                     </nav>
@@ -99,16 +105,15 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                         <div className="fixed inset-0 z-50" />
                         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                             <div className="flex items-center justify-between">
-                                <a href="#" className="-m-1.5 p-1.5">
-                                    <span className="sr-only">
-                                        Your Company
+                                <Link
+                                    href="/"
+                                    className="flex -m-1.5 p-1.5 items-center gap-2"
+                                >
+                                    <PackageIcon className="h-8 w-auto" />
+                                    <span className="font-bold hidden md:block">
+                                        Authentic Store
                                     </span>
-                                    <img
-                                        className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                        alt=""
-                                    />
-                                </a>
+                                </Link>
                                 <button
                                     type="button"
                                     className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -136,10 +141,22 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                                     </div>
                                     <div className="py-6">
                                         <a
-                                            href="#"
-                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                            href="/admin/login"
+                                            className="text-sm font-semibold leading-6 text-gray-900"
                                         >
-                                            Log in
+                                            Log in{" "}
+                                            <span aria-hidden="true">
+                                                &rarr;
+                                            </span>
+                                        </a>
+                                        <a
+                                            href="/register"
+                                            className="text-sm font-semibold leading-6 text-gray-900"
+                                        >
+                                            Register{" "}
+                                            <span aria-hidden="true">
+                                                &rarr;
+                                            </span>
                                         </a>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,13 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Index');
 });
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/1', [ProductsController::class, 'detail'])->name('products.detail');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
