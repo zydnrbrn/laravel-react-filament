@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Products;
+use App\Repositories\Eloquent\ProductsReporitory;
 use Inertia\Inertia;
 
 class ProductsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Products/Index');
+        $list = Products::all();
+
+        return Inertia::render('Products/Index', [
+            'products' => $list
+        ]);
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return Inertia::render('Products/Detail');
+        $product = Products::find($id);
+
+        return Inertia::render('Products/Detail', [
+            'product' => $product
+        ]);
+    }
+
+    public function list()
+    {
+        return Inertia::render('Dashboard/Products/Index');
     }
 }
