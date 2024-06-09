@@ -14,13 +14,38 @@ Route::get('/about', function () {
 });
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
-Route::get('/products/1', [ProductsController::class, 'detail'])->name('products.detail');
+Route::get('/products/{id}', [ProductsController::class, 'detail'])->name('products.detail');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/Index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
+Route::group([
+    'prefix' => 'dashboard',
+    'middleware' => ['auth', 'dashboard'],
+], function () {
+    Route::group([
+        'prefix' => 'products',
+    ], function () {
+        Route::get('/', [ProductsController::class, 'list'])->name('products.list');
+    });
+
+    Route::group([
+        'prefix'    => 'orders'
+    ], function () {
+        Route::get('/', function () {
+            return Inertia::render('Dashboard/Orders/Index');
+        })->name('orders');
+    });
+
+    Route::group([
+        'prefix'    => 'customers'
+    ], function () {
+        Route::get('/', function () {
+            return Inertia::render('Dashboard/Customers/Index');
+        })->name('customers');
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

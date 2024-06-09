@@ -1,10 +1,11 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import React, { PropsWithChildren } from "react";
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { PackageIcon } from "lucide-react";
+import { PageProps } from "@/types";
 
 const navigation = [
     { name: "Home", href: "/" },
@@ -38,6 +39,7 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
     title,
 }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { auth } = usePage<PageProps>().props;
     return (
         <>
             <Head title={title} />
@@ -83,18 +85,29 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                             ))}
                         </div>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
-                            <a
-                                href="/admin/login"
-                                className="text-sm font-semibold leading-6 text-gray-900"
-                            >
-                                Log in
-                            </a>
-                            <a
-                                href="/register"
-                                className="text-sm font-semibold leading-6 text-gray-900"
-                            >
-                                Register
-                            </a>
+                            {auth.user ? (
+                                <Link
+                                    href="/dashboard"
+                                    className="text-sm font-semibold leading-6 text-gray-900"
+                                >
+                                    Dashboard
+                                </Link>
+                            ) : (
+                                <>
+                                    <a
+                                        href="/login"
+                                        className="text-sm font-semibold leading-6 text-gray-900"
+                                    >
+                                        Log in
+                                    </a>
+                                    <a
+                                        href="/register"
+                                        className="text-sm font-semibold leading-6 text-gray-900"
+                                    >
+                                        Register
+                                    </a>
+                                </>
+                            )}
                         </div>
                     </nav>
                     <Dialog
@@ -140,24 +153,29 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                                         ))}
                                     </div>
                                     <div className="py-6">
-                                        <a
-                                            href="/admin/login"
-                                            className="text-sm font-semibold leading-6 text-gray-900"
-                                        >
-                                            Log in{" "}
-                                            <span aria-hidden="true">
-                                                &rarr;
-                                            </span>
-                                        </a>
-                                        <a
-                                            href="/register"
-                                            className="text-sm font-semibold leading-6 text-gray-900"
-                                        >
-                                            Register{" "}
-                                            <span aria-hidden="true">
-                                                &rarr;
-                                            </span>
-                                        </a>
+                                        {auth.user ? (
+                                            <Link
+                                                href="/dashboard"
+                                                className="text-sm font-semibold leading-6 text-gray-900"
+                                            >
+                                                Dashboard
+                                            </Link>
+                                        ) : (
+                                            <div className="flex gap-2">
+                                                <a
+                                                    href="/login"
+                                                    className="text-sm font-semibold leading-6 text-gray-900"
+                                                >
+                                                    Log in
+                                                </a>
+                                                <a
+                                                    href="/register"
+                                                    className="text-sm font-semibold leading-6 text-gray-900"
+                                                >
+                                                    Register
+                                                </a>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
