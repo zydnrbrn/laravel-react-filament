@@ -28,6 +28,11 @@ Route::group([
         'prefix' => 'products',
     ], function () {
         Route::get('/', [ProductsController::class, 'list'])->name('products.list');
+        Route::get('/create', [ProductsController::class, 'dashboardCreatePage'])->name('products.create');
+        Route::post('/create', [ProductsController::class, 'create'])->name('products.store');
+        Route::get('/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+        Route::patch('/{id}/edit', [ProductsController::class, 'update'])->name('products.update');
+        Route::delete('/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
     });
 
     Route::group([
