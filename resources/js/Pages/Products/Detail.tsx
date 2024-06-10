@@ -9,7 +9,7 @@ export default function Detail({
 }: PageProps & { product: ProductProps }) {
     return (
         <GuestPageLayout title={"Detail"}>
-            <div className="bg-white">
+            <div className="my-10">
                 <div className="pt-6">
                     {/* Image gallery */}
                     <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">

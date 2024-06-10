@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,11 @@ Route::get('/about', function () {
 
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductsController::class, 'detail'])->name('products.detail');
+Route::group([
+    'prefix'    => 'pay'
+], function () {
+    Route::get('/', [OrdersController::class, 'paymentPage'])->name('products.pay');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/Index');

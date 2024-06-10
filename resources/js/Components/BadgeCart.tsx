@@ -1,6 +1,5 @@
 import { MinusIcon, PlusIcon, ShoppingCartIcon } from "lucide-react";
 import {
-    Button,
     Dialog,
     DialogPanel,
     DialogTitle,
@@ -9,6 +8,7 @@ import {
 } from "@headlessui/react";
 import { useState } from "react";
 import { getCart } from "@/Utils/cart";
+import { Button } from "./ui/button";
 
 function BadgeCart() {
     let [isOpen, setIsOpen] = useState(false);
@@ -20,6 +20,7 @@ function BadgeCart() {
     function close() {
         setIsOpen(false);
     }
+
     function CartModal() {
         const listProductsCart = getCart();
         return (
@@ -40,7 +41,7 @@ function BadgeCart() {
                                 leaveFrom="opacity-100 transform-[scale(100%)]"
                                 leaveTo="opacity-0 transform-[scale(95%)]"
                             >
-                                <DialogPanel className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl text-black shadow-md mt-10">
+                                <DialogPanel className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl text-black shadow-md mt-16">
                                     <DialogTitle
                                         as="h3"
                                         className="text-base/7 font-medium"
@@ -84,7 +85,7 @@ function BadgeCart() {
                                     </div>
                                     <div className="mt-4">
                                         <Button
-                                            className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
+                                            className="inline-flex items-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
                                             onClick={close}
                                         >
                                             Checkout
@@ -100,13 +101,13 @@ function BadgeCart() {
     }
     return (
         <>
-            <button
+            <Button
                 onClick={open}
-                className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-800"
+                className="rounded-md px-2 text-xs font-medium"
             >
                 {getCart().length}
                 <ShoppingCartIcon className="ml-0.5 h-4 w-4" />
-            </button>
+            </Button>
             <CartModal />
         </>
     );

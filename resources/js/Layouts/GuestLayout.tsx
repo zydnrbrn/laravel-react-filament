@@ -4,9 +4,10 @@ import React, { PropsWithChildren } from "react";
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PackageIcon } from "lucide-react";
+import { LayoutDashboard, PackageIcon } from "lucide-react";
 import { PageProps } from "@/types";
 import BadgeCart from "@/Components/BadgeCart";
+import { Button } from "@/Components/ui/button";
 
 const navigation = [
     { name: "Home", href: "/" },
@@ -44,7 +45,7 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
     return (
         <>
             <Head title={title} />
-            <div className="bg-white">
+            <div>
                 <header className="absolute inset-x-0 top-0 z-50">
                     <nav
                         className="flex items-center justify-between p-6 lg:px-8"
@@ -92,9 +93,12 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                                     <BadgeCart />
                                     <Link
                                         href="/dashboard"
-                                        className="text-sm font-semibold leading-6 text-gray-900"
+                                        className="text-sm font-semibold leading-6 text-gray-900 justify-center"
                                     >
-                                        Dashboard
+                                        <Button className="flex gap-2">
+                                            <LayoutDashboard />
+                                            Dashboard
+                                        </Button>
                                     </Link>
                                 </>
                             ) : (
