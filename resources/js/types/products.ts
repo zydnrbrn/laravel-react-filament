@@ -4,6 +4,8 @@ export type ProductProps = {
     description: string;
     image: string;
     price: number;
+    stock: number;
+    quantity: number;
     created_at: string;
     updated_at: string;
 };
