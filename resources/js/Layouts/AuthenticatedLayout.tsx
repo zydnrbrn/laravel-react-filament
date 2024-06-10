@@ -1,4 +1,4 @@
-import { useState, PropsWithChildren, ReactNode } from "react";
+import { useState, PropsWithChildren } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
@@ -179,9 +179,18 @@ export default function Authenticated({
                 </nav>
                 <main>
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 my-4">
+                        <h1 className="text-2xl font-bold">{title}</h1>
                         {children}
                     </div>
                 </main>
+                <footer className="py-4">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p className="text-center text-gray-500">
+                            ©{new Date().getFullYear()} Authentic Store. All
+                            rights reserved.
+                        </p>
+                    </div>
+                </footer>
             </div>
         </>
     );

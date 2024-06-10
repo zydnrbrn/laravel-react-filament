@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
-use App\Repositories\Eloquent\ProductsReporitory;
 use Inertia\Inertia;
 
 class ProductsController extends Controller
@@ -28,6 +27,15 @@ class ProductsController extends Controller
 
     public function list()
     {
-        return Inertia::render('Dashboard/Products/Index');
+        $products = Products::all();
+
+        return Inertia::render('Dashboard/Products/Index', [
+            'products' => $products
+        ]);
+    }
+
+    public function dashboardCreatePage()
+    {
+        return Inertia::render('Dashboard/Products/Create');
     }
 }
