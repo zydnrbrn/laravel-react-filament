@@ -68,11 +68,11 @@ export default () => {
                                     key={idx}
                                     className="flex gap-4 items-center"
                                 >
-                                    <div className="flex-none w-24 h-24">
+                                    <div className="flex-none w-44 h-44">
                                         <img
                                             src={item.avatar}
                                             className="w-full h-full rounded-full"
-                                            alt=""
+                                            alt={item.name}
                                         />
                                     </div>
                                     <div>
