@@ -12,7 +12,7 @@ import { Button } from "@/Components/ui/button";
 const navigation = [
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
-    { name: "About", href: "#" },
+    { name: "About", href: "/about" },
 ];
 
 interface GuestPageProps {
