@@ -1,21 +1,21 @@
 import { ProductProps } from "@/types/products";
 
 export function getCart(): ProductProps[] {
-    return JSON.parse(sessionStorage.getItem("cart") || "[]");
+    return JSON.parse(localStorage.getItem("cart") || "[]");
 }
 
 export function saveProductsToStorage(products: ProductProps[]) {
-    sessionStorage.setItem("products", JSON.stringify(products));
+    localStorage.setItem("products", JSON.stringify(products));
 }
 
 export function setCart(cart: ProductProps[]) {
-    sessionStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 export function getProductById(productId: number): ProductProps | null {
-    // Get the product list from the sessionStorage
+    // Get the product list from the localStorage
     const productList: ProductProps[] = JSON.parse(
-        sessionStorage.getItem("products") || "[]"
+        localStorage.getItem("products") || "[]"
     );
 
     // Find the product by its id
@@ -25,7 +25,6 @@ export function getProductById(productId: number): ProductProps | null {
 }
 
 export function addToCart(productId: number) {
-    console.info(productId);
     const product = getProductById(productId);
     if (!product) {
         throw new Error("Product not found");

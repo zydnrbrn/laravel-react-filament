@@ -17,14 +17,12 @@ Route::get('/about', function () {
 Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductsController::class, 'detail'])->name('products.detail');
 Route::group([
-    'prefix'    => 'pay'
+    'prefix'    => 'checkout'
 ], function () {
     Route::get('/', [OrdersController::class, 'paymentPage'])->name('products.pay');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/Index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ProfileController::class, 'edit'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::group([
     'prefix' => 'dashboard',
@@ -56,10 +54,10 @@ Route::group([
             return Inertia::render('Dashboard/Customers/Index');
         })->name('customers');
     });
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 require __DIR__ . '/auth.php';

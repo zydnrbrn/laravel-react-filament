@@ -9,11 +9,15 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $list = Products::all();
+        try {
+            $list = Products::all();
 
-        return Inertia::render('Products/Index', [
-            'products' => $list
-        ]);
+            return Inertia::render('Products/Index', [
+                'products' => $list
+            ]);
+        } catch (\Exception $e) {
+            return Inertia::render('Products/Index', []);
+        }
     }
 
     public function detail($id)
@@ -27,15 +31,23 @@ class ProductsController extends Controller
 
     public function list()
     {
-        $products = Products::all();
+        try {
+            $list = Products::all();
 
-        return Inertia::render('Dashboard/Products/Index', [
-            'products' => $products
-        ]);
+            return Inertia::render('Dashboard/Products/List', [
+                'products' => $list
+            ]);
+        } catch (\Exception $e) {
+            return Inertia::render('Dashboard/Products/List', []);
+        }
     }
 
     public function dashboardCreatePage()
     {
-        return Inertia::render('Dashboard/Products/Create');
+        try {
+            return Inertia::render('Dashboard/Products/Create');
+        } catch (\Exception $e) {
+            return Inertia::render('Dashboard/Products/Create', []);
+        }
     }
 }

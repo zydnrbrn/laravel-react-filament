@@ -63,7 +63,7 @@ export const GuestPageLayout: React.FC<GuestPageProps> = ({
                             </Link>
                         </div>
                         <div className="flex gap-2 lg:hidden justify-center items-center">
-                            <BadgeCart />
+                            {auth.user && <BadgeCart />}
                             <button
                                 type="button"
                                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"

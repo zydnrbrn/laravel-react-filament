@@ -7,8 +7,10 @@ import {
     TransitionChild,
 } from "@headlessui/react";
 import { useState } from "react";
-import { getCart } from "@/Utils/cart";
+import { getCart, saveProductsToStorage } from "@/Utils/cart";
 import { Button } from "./ui/button";
+import { router } from "@inertiajs/react";
+import { ProductProps } from "@/types/products";
 
 function BadgeCart() {
     let [isOpen, setIsOpen] = useState(false);
@@ -22,7 +24,8 @@ function BadgeCart() {
     }
 
     function CartModal() {
-        const listProductsCart = getCart();
+        const listProductsCart: ProductProps[] = getCart();
+
         return (
             <Transition appear show={isOpen}>
                 <Dialog
@@ -69,24 +72,18 @@ function BadgeCart() {
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <button className="text-gray-500">
-                                                        <PlusIcon className="h-4 w-4" />
-                                                    </button>
-                                                    <span className="text-sm/6 font-semibold">
-                                                        {product.quantity}
-                                                    </span>
-                                                    <button className="text-gray-500">
-                                                        <MinusIcon className="h-4 w-4" />
-                                                    </button>
-                                                </div>
                                             </div>
                                         ))}
                                     </div>
                                     <div className="mt-4">
                                         <Button
                                             className="inline-flex items-center gap-2 rounded-md py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white"
-                                            onClick={close}
+                                            onClick={() => {
+                                                router.get(
+                                                    route("products.pay")
+                                                );
+                                                close();
+                                            }}
                                         >
                                             Checkout
                                         </Button>

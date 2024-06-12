@@ -27,7 +27,7 @@ export default function Authenticated({
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                                 </div>
 
-                                <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {/* <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                     {NavData(user).map((navItem) =>
                                         navItem.shouldShow ? (
                                             <NavLink
@@ -41,7 +41,7 @@ export default function Authenticated({
                                             </NavLink>
                                         ) : null
                                     )}
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="hidden sm:flex sm:items-center sm:ms-6">
@@ -138,7 +138,7 @@ export default function Authenticated({
                             " sm:hidden"
                         }
                     >
-                        <div className="pt-2 pb-3 space-y-1">
+                        {/* <div className="pt-2 pb-3 space-y-1">
                             {NavData(user).map((navItem) =>
                                 navItem.shouldShow ? (
                                     <ResponsiveNavLink
@@ -150,7 +150,7 @@ export default function Authenticated({
                                     </ResponsiveNavLink>
                                 ) : null
                             )}
-                        </div>
+                        </div> */}
 
                         <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                             <div className="px-4">
