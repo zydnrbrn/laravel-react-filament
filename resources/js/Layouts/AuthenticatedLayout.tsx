@@ -5,7 +5,9 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { User } from "@/types";
 import { NavData } from "@/Constant/data";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
+import { Button } from "@/Components/ui/button";
+import { HomeIcon } from "lucide-react";
 
 export default function Authenticated({
     user,
@@ -179,7 +181,14 @@ export default function Authenticated({
                 </nav>
                 <main>
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 my-4">
-                        <h1 className="text-2xl font-bold">{title}</h1>
+                        <div className="flex gap-2  justify-between">
+                            <h1 className="text-2xl font-bold">{title}</h1>
+                            <Link href="/">
+                                <Button className="flex items-center gap-2">
+                                    <HomeIcon /> Back To Home
+                                </Button>
+                            </Link>
+                        </div>
                         {children}
                     </div>
                 </main>

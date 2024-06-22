@@ -10,6 +10,26 @@ function PaymentPage() {
         getCart()
     );
 
+    const addQuantity = (product: ProductProps) => {
+        const newProducts = ChoosedProducts.map((p) => {
+            if (p.id === product.id) {
+                return { ...p, quantity: p.quantity + 1 };
+            }
+            return p;
+        });
+        setChoosedProducts(newProducts);
+    };
+
+    const reduceQuantity = (product: ProductProps) => {
+        const newProducts = ChoosedProducts.map((p) => {
+            if (p.id === product.id) {
+                return { ...p, quantity: p.quantity - 1 };
+            }
+            return p;
+        });
+        setChoosedProducts(newProducts);
+    };
+
     const formatWhatsAppMessage = (products: ProductProps[]) => {
         let message =
             "Hello, I would like to proceed with the payment for the following items:\n\n";
@@ -33,26 +53,6 @@ function PaymentPage() {
             message
         )}`;
         window.location.href = whatsappURL;
-    };
-
-    const addQuantity = (product: ProductProps) => {
-        const newProducts = ChoosedProducts.map((p) => {
-            if (p.id === product.id) {
-                return { ...p, quantity: p.quantity + 1 };
-            }
-            return p;
-        });
-        setChoosedProducts(newProducts);
-    };
-
-    const reduceQuantity = (product: ProductProps) => {
-        const newProducts = ChoosedProducts.map((p) => {
-            if (p.id === product.id) {
-                return { ...p, quantity: p.quantity - 1 };
-            }
-            return p;
-        });
-        setChoosedProducts(newProducts);
     };
 
     return (

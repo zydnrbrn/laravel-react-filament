@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class OrdersController extends Controller
@@ -11,7 +10,7 @@ class OrdersController extends Controller
     {
         try {
             return Inertia::render('Orders/PaymentPage');
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return Inertia::render('Orders/PaymentPage', []);
         }
     }

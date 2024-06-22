@@ -7,7 +7,7 @@ import {
     TransitionChild,
 } from "@headlessui/react";
 import { useState } from "react";
-import { getCart, saveProductsToStorage } from "@/Utils/cart";
+import { getCart, saveProductsToStorage, setCart } from "@/Utils/cart";
 import { Button } from "./ui/button";
 import { router } from "@inertiajs/react";
 import { ProductProps } from "@/types/products";
@@ -24,7 +24,29 @@ function BadgeCart() {
     }
 
     function CartModal() {
-        const listProductsCart: ProductProps[] = getCart();
+        const [ChoosedProducts, setChoosedProducts] = useState<ProductProps[]>(
+            getCart()
+        );
+
+        const addQuantity = (product: ProductProps) => {
+            const newProducts = ChoosedProducts.map((p) => {
+                if (p.id === product.id) {
+                    return { ...p, quantity: p.quantity + 1 };
+                }
+                return p;
+            });
+            setChoosedProducts(newProducts);
+        };
+
+        const reduceQuantity = (product: ProductProps) => {
+            const newProducts = ChoosedProducts.map((p) => {
+                if (p.id === product.id) {
+                    return { ...p, quantity: p.quantity - 1 };
+                }
+                return p;
+            });
+            setChoosedProducts(newProducts);
+        };
 
         return (
             <Transition appear show={isOpen}>
@@ -52,7 +74,7 @@ function BadgeCart() {
                                         My Cart
                                     </DialogTitle>
                                     <div className="mt-4">
-                                        {listProductsCart.map((product) => (
+                                        {ChoosedProducts.map((product) => (
                                             <div
                                                 key={product.id}
                                                 className="flex items-center justify-between gap-4"
@@ -72,6 +94,29 @@ function BadgeCart() {
                                                         </p>
                                                     </div>
                                                 </div>
+                                                <div className="flex items-center gap-2">
+                                                    <button
+                                                        onClick={() =>
+                                                            addQuantity(product)
+                                                        }
+                                                        className="text-gray-500"
+                                                    >
+                                                        <PlusIcon className="h-4 w-4" />
+                                                    </button>
+                                                    <span className="text-sm/6 font-semibold">
+                                                        {product.quantity}
+                                                    </span>
+                                                    <button
+                                                        onClick={() =>
+                                                            reduceQuantity(
+                                                                product
+                                                            )
+                                                        }
+                                                        className="text-gray-500"
+                                                    >
+                                                        <MinusIcon className="h-4 w-4" />
+                                                    </button>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
@@ -82,6 +127,7 @@ function BadgeCart() {
                                                 router.get(
                                                     route("products.pay")
                                                 );
+                                                setCart(ChoosedProducts);
                                                 close();
                                             }}
                                         >
