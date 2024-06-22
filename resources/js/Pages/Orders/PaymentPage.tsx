@@ -113,6 +113,16 @@ function PaymentPage() {
                             </div>
                         ))}
                     </div>
+                    <div className="total">
+                        <p className="text-gray-500 font-semibold">
+                            Total Amount: IDR{" "}
+                            {ChoosedProducts.reduce(
+                                (acc, product) =>
+                                    acc + product.price * product.quantity,
+                                0
+                            )}
+                        </p>
+                    </div>
                     <div className="mt-4">
                         <Button
                             onClick={() => {
