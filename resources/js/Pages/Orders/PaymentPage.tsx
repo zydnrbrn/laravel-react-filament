@@ -33,19 +33,17 @@ function PaymentPage() {
     const formatWhatsAppMessage = (products: ProductProps[]) => {
         let message =
             "Hello, I would like to proceed with the payment for the following items:\n\n";
-        let totalAmount = 0;
 
         products.forEach((product) => {
             const priceWithoutSymbols = parseFloat(
                 product.price.toString().replace(/[,.]/g, "")
             );
             const productTotal = priceWithoutSymbols * product.quantity;
-            totalAmount += productTotal;
 
             message += `- ${product.name} (${product.quantity} x ${product.price}) = ${productTotal}\n`;
         });
 
-        message += `\nTotal Amount: ${totalAmount}`;
+        message += `\nTotal Amount: ${calculateTotalAmount()}`;
 
         return message;
     };
@@ -61,15 +59,22 @@ function PaymentPage() {
 
     const calculateTotalAmount = () => {
         let totalAmount = 0;
+        const feePerItem = parseFloat("3000.00"); // Parse the fee per item as 3,000.00
         ChoosedProducts.forEach((product) => {
-            // Convert the price to a string before removing commas and dots
-            const priceString = product.price.toString();
-            const priceWithoutSymbols = parseFloat(
-                priceString.replace(/[,.]/g, "")
-            );
-            totalAmount += priceWithoutSymbols * product.quantity;
+            // Correctly interpret "25.000.00" as 25,000.00
+            const priceString = product.price.toString().replace(/\./g, ""); // Remove all dots
+            const priceWithoutSymbols = parseFloat(priceString) / 100; // Adjust for correct value interpretation
+            const productTotal =
+                (priceWithoutSymbols + feePerItem) * product.quantity; // Add fee per item
+            totalAmount += productTotal;
         });
-        return totalAmount;
+        // Correctly format the total amount
+        let formattedTotalAmount = Math.round(totalAmount).toFixed(2); // Round to nearest whole number and format
+        formattedTotalAmount = formattedTotalAmount.replace(
+            /\B(?=(\d{3})+(?!\d))/g,
+            "."
+        ); // Add dot as thousand separator
+        return formattedTotalAmount;
     };
 
     return (
