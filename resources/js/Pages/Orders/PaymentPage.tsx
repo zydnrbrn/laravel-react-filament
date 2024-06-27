@@ -36,13 +36,17 @@ function PaymentPage() {
         let totalAmount = 0;
 
         products.forEach((product) => {
-            const productTotal = product.price * product.quantity;
+            const priceWithoutSymbols = parseFloat(
+                product.price.toString().replace(/[,.]/g, "")
+            );
+            const productTotal = priceWithoutSymbols * product.quantity;
             totalAmount += productTotal;
-            message += `- ${product.name} (IDR ${product.price}) x ${product.quantity} = IDR ${productTotal}\n`;
+
+            message += `- ${product.name} (${product.quantity} x ${product.price}) = ${productTotal}\n`;
         });
 
-        message += `\nTotal Amount: IDR ${totalAmount}\n`;
-        message += "\nThank you!";
+        message += `\nTotal Amount: ${totalAmount}`;
+
         return message;
     };
 
@@ -53,6 +57,19 @@ function PaymentPage() {
             message
         )}`;
         window.location.href = whatsappURL;
+    };
+
+    const calculateTotalAmount = () => {
+        let totalAmount = 0;
+        ChoosedProducts.forEach((product) => {
+            // Convert the price to a string before removing commas and dots
+            const priceString = product.price.toString();
+            const priceWithoutSymbols = parseFloat(
+                priceString.replace(/[,.]/g, "")
+            );
+            totalAmount += priceWithoutSymbols * product.quantity;
+        });
+        return totalAmount;
     };
 
     return (
@@ -115,12 +132,7 @@ function PaymentPage() {
                     </div>
                     <div className="total">
                         <p className="text-gray-500 font-semibold">
-                            Total Amount: IDR{" "}
-                            {ChoosedProducts.reduce(
-                                (acc, product) =>
-                                    acc + product.price * product.quantity,
-                                0
-                            )}
+                            Total Amount: IDR{" " + calculateTotalAmount()}
                         </p>
                     </div>
                     <div className="mt-4">

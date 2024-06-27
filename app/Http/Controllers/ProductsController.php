@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductCategories;
 use App\Models\Products;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         try {
             $list = Products::all();
+            $listCategories = ProductCategories::all();
+            $categoryId = $request->createFromGlobals()->query->get('category_id');
+
+            if ($categoryId) {
+                $list = Products::where('category_id', $categoryId)->get();
+            }
 
             return Inertia::render('Products/Index', [
-                'products' => $list
+                'products' => $list,
+                'productCategories' => $listCategories,
             ]);
         } catch (\Exception $e) {
             return Inertia::render('Products/Index', []);
