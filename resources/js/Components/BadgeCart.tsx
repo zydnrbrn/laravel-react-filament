@@ -41,7 +41,9 @@ function BadgeCart() {
         const reduceQuantity = (product: ProductProps) => {
             const newProducts = ChoosedProducts.map((p) => {
                 if (p.id === product.id) {
-                    return { ...p, quantity: p.quantity - 1 };
+                    // Ensure quantity does not go below 0
+                    const newQuantity = p.quantity > 0 ? p.quantity - 1 : 0;
+                    return { ...p, quantity: newQuantity };
                 }
                 return p;
             });
