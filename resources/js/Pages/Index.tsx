@@ -1,5 +1,7 @@
+import { Faq } from "@/Components/Faq";
+import { HeroParallax } from "@/Components/ui/hero-parallax";
+import { InfiniteMovingCards } from "@/Components/ui/infinite-moving-cards";
 import { GuestPageLayout } from "@/Layouts/GuestLayout";
-import { Link } from "@inertiajs/react";
 import { LeafIcon, ScissorsIcon, Utensils } from "lucide-react";
 
 const features = [
@@ -24,8 +26,114 @@ const features = [
 ];
 
 export default function Index() {
+    const products = [
+        {
+            title: "Cooking Food",
+            link: "",
+            thumbnail: "/assets/images/header/sddefault.jpg",
+        },
+        {
+            title: "Cafe",
+            link: "",
+            thumbnail: "/assets/images/header/cafe.jpg",
+        },
+        {
+            title: "Rattan Weaving",
+            link: "",
+            thumbnail: "/assets/images/header/rattan-weaving.jpg",
+        },
+        {
+            title: "Modern Food",
+            link: "",
+            thumbnail: "/assets/images/header/food-street.jpg",
+        },
+        {
+            title: "Wood Weaving",
+            link: "",
+            thumbnail: "/assets/images/header/wood-weaving.jpg",
+        },
+        {
+            title: "Cooking Food",
+            link: "",
+            thumbnail: "/assets/images/header/sddefault.jpg",
+        },
+        {
+            title: "Cafe",
+            link: "",
+            thumbnail: "/assets/images/header/cafe.jpg",
+        },
+        {
+            title: "Rattan Weaving",
+            link: "",
+            thumbnail: "/assets/images/header/rattan-weaving.jpg",
+        },
+        {
+            title: "Modern Food",
+            link: "",
+            thumbnail: "/assets/images/header/food-street.jpg",
+        },
+        {
+            title: "Wood Weaving",
+            link: "",
+            thumbnail: "/assets/images/header/wood-weaving.jpg",
+        },
+        {
+            title: "Cooking Food",
+            link: "",
+            thumbnail: "/assets/images/header/sddefault.jpg",
+        },
+        {
+            title: "Cafe",
+            link: "",
+            thumbnail: "/assets/images/header/cafe.jpg",
+        },
+        {
+            title: "Rattan Weaving",
+            link: "",
+            thumbnail: "/assets/images/header/rattan-weaving.jpg",
+        },
+        {
+            title: "Modern Food",
+            link: "",
+            thumbnail: "/assets/images/header/food-street.jpg",
+        },
+        {
+            title: "Wood Weaving",
+            link: "https://editrix.ai",
+            thumbnail: "/assets/images/header/wood-weaving.jpg",
+        },
+    ];
+
+    const testimonials = [
+        {
+            quote: "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
+            name: "Charles Dickens",
+            title: "A Tale of Two Cities",
+        },
+        {
+            quote: "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
+            name: "William Shakespeare",
+            title: "Hamlet",
+        },
+        {
+            quote: "All that we see or seem is but a dream within a dream.",
+            name: "Edgar Allan Poe",
+            title: "A Dream Within a Dream",
+        },
+        {
+            quote: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+            name: "Jane Austen",
+            title: "Pride and Prejudice",
+        },
+        {
+            quote: "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
+            name: "Herman Melville",
+            title: "Moby-Dick",
+        },
+    ];
     return (
         <GuestPageLayout title="Let's Bring Our Authentic Thing's to World">
+            <HeroParallax products={products} />
             <div
                 className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                 aria-hidden="true"
@@ -37,44 +145,6 @@ export default function Index() {
                             "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
                     }}
                 />
-            </div>
-            <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        Announcing our next round of funding.{" "}
-                        <a href="#" className="font-semibold text-indigo-600">
-                            <span
-                                className="absolute inset-0"
-                                aria-hidden="true"
-                            />
-                            Read more <span aria-hidden="true">&rarr;</span>
-                        </a>
-                    </div>
-                </div>
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                        Let's Bring Our Authentic Thing's to World
-                    </h1>
-                    <p className="mt-6 text-lg leading-8 text-gray-600">
-                        Our furniture & food is made from the finest materials
-                        and designed to last a lifetime. We offer a wide range
-                        of styles to suit every room in your home.
-                    </p>
-                    <div className="mt-10 flex items-center justify-center gap-x-6">
-                        <Link
-                            href="/login"
-                            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        >
-                            Get started
-                        </Link>
-                        <a
-                            href="#"
-                            className="text-sm font-semibold leading-6 text-gray-900"
-                        >
-                            Learn more <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-                </div>
             </div>
             <div
                 className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -89,7 +159,7 @@ export default function Index() {
                 />
             </div>
             <div className="overflow-hidden py-24 sm:py-32">
-                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <div className="mx-auto px-6 lg:px-8">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
                         <div className="lg:pr-8 lg:pt-4">
                             <div className="lg:max-w-lg">
@@ -180,6 +250,29 @@ export default function Index() {
                             height={48}
                         />
                     </div>
+                </div>
+            </div>
+            <div className="my-24 sm:my-32">
+                <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+                    What Our Customers Say
+                </h2>
+                <InfiniteMovingCards
+                    items={testimonials}
+                    direction="right"
+                    speed="slow"
+                />
+            </div>
+            <div className="my-24 sm:my-32">
+                <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+                    Frequently Asked Question
+                </h2>
+                <div className="flex w-full gap-10 justify-between my-5">
+                    <Faq />
+                    <img
+                        className="w-[400px] h-[400px]"
+                        src="/assets/illustrations/questing.svg"
+                        alt="Faq"
+                    />
                 </div>
             </div>
         </GuestPageLayout>
