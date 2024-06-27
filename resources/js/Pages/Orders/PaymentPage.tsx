@@ -94,7 +94,7 @@ function PaymentPage() {
                             payment there.
                         </p>
                     </div>
-                    <div className="m-4">
+                    <div className="m-10">
                         {ChoosedProducts.map((product) => (
                             <div
                                 key={product.id}
@@ -135,9 +135,13 @@ function PaymentPage() {
                             </div>
                         ))}
                     </div>
-                    <div className="total">
+                    <div className="flex justify-between m-10">
                         <p className="text-gray-500 font-semibold">
                             Total Amount: IDR{" " + calculateTotalAmount()}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                            Note: An additional IDR 3,000.0s0 is required for
+                            shipping.
                         </p>
                     </div>
                     <div className="mt-4">
@@ -149,12 +153,6 @@ function PaymentPage() {
                         >
                             Process Now
                         </Button>
-                    </div>
-                    <div className="my-2 text-sm text-gray-600">
-                        <p>
-                            Note: An additional IDR 3,000.00 is required for
-                            shipping.
-                        </p>
                     </div>
                 </div>
             </div>
