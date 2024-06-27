@@ -150,6 +150,12 @@ function PaymentPage() {
                             Process Now
                         </Button>
                     </div>
+                    <div className="my-2 text-sm text-gray-600">
+                        <p>
+                            Note: An additional IDR 3,000.00 is required for
+                            shipping.
+                        </p>
+                    </div>
                 </div>
             </div>
         </GuestPageLayout>
