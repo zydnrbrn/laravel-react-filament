@@ -7,7 +7,7 @@ import {
     TransitionChild,
 } from "@headlessui/react";
 import { useState } from "react";
-import { getCart, saveProductsToStorage, setCart } from "@/Utils/cart";
+import { getCart, setCart } from "@/Utils/cart";
 import { Button } from "./ui/button";
 import { router } from "@inertiajs/react";
 import { ProductProps } from "@/types/products";

@@ -152,6 +152,7 @@ function PaymentPage() {
                                 handleProcessNowClick();
                                 saveProductsToStorage(ChoosedProducts);
                             }}
+                            disabled={calculateTotalAmount() === "0.00"}
                         >
                             Process Now
                         </Button>
