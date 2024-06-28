@@ -62,11 +62,18 @@ export default () => {
                             services. We are always looking for new and exciting
                             opportunities to work on.
                         </p>
-                        <Button asChild className="my-4">
-                            <Link href="https://telegram.org/">
-                                Join Our Forum
-                            </Link>
-                        </Button>
+                        <div className="my-4 flex gap-4">
+                            <Button asChild>
+                                <Link href="https://whatsapp.com/">
+                                    Contact Admin
+                                </Link>
+                            </Button>
+                            <Button asChild>
+                                <Link href="https://telegram.org/">
+                                    Join Our Forum
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
                     <div className="mt-12">
                         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
