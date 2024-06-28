@@ -106,31 +106,32 @@ export default function Index() {
 
     const testimonials = [
         {
-            quote: "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-            name: "Charles Dickens",
-            title: "A Tale of Two Cities",
+            quote: "The handcrafted batik shirt I purchased is absolutely beautiful and authentic. You can see the attention to detail and craftsmanship in every stitch.",
+            name: "Samantha Lee",
+            title: "Satisfied Customer",
         },
         {
-            quote: "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-            name: "William Shakespeare",
-            title: "Hamlet",
+            quote: "I bought a wooden carving from this store, and it is a true piece of art. It arrived quickly and was even more stunning in person.",
+            name: "John Doe",
+            title: "Art Enthusiast",
         },
         {
-            quote: "All that we see or seem is but a dream within a dream.",
-            name: "Edgar Allan Poe",
-            title: "A Dream Within a Dream",
+            quote: "The jewelry here is exquisite. Each piece tells a story and is crafted with such care. I will definitely be buying more!",
+            name: "Maria Gonzalez",
+            title: "Happy Shopper",
         },
         {
-            quote: "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-            name: "Jane Austen",
-            title: "Pride and Prejudice",
+            quote: "I was looking for authentic Indonesian textiles, and this store did not disappoint. The quality is top-notch, and the designs are unique and vibrant.",
+            name: "Alex Johnson",
+            title: "Textile Collector",
         },
         {
-            quote: "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-            name: "Herman Melville",
-            title: "Moby-Dick",
+            quote: "Excellent customer service and high-quality products. The rattan bag I ordered was exactly as described and beautifully made.",
+            name: "Linda Smith",
+            title: "Fashion Lover",
         },
     ];
+
     return (
         <GuestPageLayout title="Let's Bring Our Authentic Thing's to World">
             <HeroParallax products={products} />
